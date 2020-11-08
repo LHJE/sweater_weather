@@ -6,20 +6,20 @@ RSpec.describe 'Weather Facade' do
 
     forecast = WeatherFacade.get_forecast(lat, lon)
 
-    expect(forecast).to be_a(Hash)
-    expect(forecast[:current]).to be_a(Hash)
-    expect(forecast[:daily]).to be_an(Array)
-    expect(forecast[:current][:humidity]).to be_a(Numeric)
-    expect(forecast[:current][:temp]).to be_a(Numeric)
-    expect(forecast[:current][:weather]).to be_an(Array)
-    expect(forecast[:current][:weather][0]).to be_a(Hash)
-    expect(forecast[:current][:weather][0][:description]).to be_a(String)
+    expect(forecast).to be_a(Weather)
+    expect(forecast.daily).to be_an(Array)
+    expect(forecast.humidity).to be_a(Numeric)
+    expect(forecast.temperature).to be_a(Numeric)
+    expect(forecast.hourly).to be_a(Array)
 
-    expect(forecast[:daily][0]).to be_a(Hash)
-    expect(forecast[:daily][0][:humidity]).to be_a(Numeric)
-    expect(forecast[:daily][0][:temp][:day]).to be_a(Numeric)
-    expect(forecast[:daily][0][:weather]).to be_an(Array)
-    expect(forecast[:daily][0][:weather][0]).to be_a(Hash)
-    expect(forecast[:daily][0][:weather][0][:description]).to be_a(String)
+    expect(forecast.daily[0]).to be_a(DailyForecast)
+    expect(forecast.daily[0].humidity).to be_a(Numeric)
+    expect(forecast.daily[0].temperature).to be_a(Numeric)
+    expect(forecast.daily[0].date).to be_a(Time)
+    expect(forecast.daily[0].description).to be_a(String)
+
+    expect(forecast.hourly[0]).to be_a(HourlyForecast)
+    expect(forecast.hourly[0].hour).to be_a(Time)
+    expect(forecast.hourly[0].temperature).to be_a(Numeric)
   end
 end
