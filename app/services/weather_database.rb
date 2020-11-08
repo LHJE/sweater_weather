@@ -8,7 +8,7 @@ class WeatherDatabase
       f.params['appid'] = ENV['WEATHER_API_KEY']
       f.params['lat'] = lat
       f.params['lon'] = lon
-      f.params['exclude'] = 'minutely,hourly'
+      f.params['exclude'] = 'minutely'
       f.params['units'] = 'imperial'
     end
 
