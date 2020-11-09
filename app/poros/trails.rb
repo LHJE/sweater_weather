@@ -7,7 +7,7 @@ class Trails
     @id = nil
     @forecast = {}
     @forecast[:summary] = forecast[:weather][0][:description]
-    @forecast[:tempurature] = forecast[:temp]
+    @forecast[:temperature] = forecast[:temp]
     @trails = format_trails(data, lat, lon)
   end
 
