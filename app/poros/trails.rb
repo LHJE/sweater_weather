@@ -1,9 +1,11 @@
 class Trails
   attr_reader :id,
+              :location,
               :forecast,
               :trails
 
-  def initialize(data, forecast, lat, lon)
+  def initialize(data, forecast, lat, lon, location)
+    @location = location
     @forecast = {}
     @forecast[:summary] = forecast[:weather][0][:description]
     @forecast[:temperature] = forecast[:temp]
