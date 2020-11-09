@@ -7,5 +7,9 @@ RSpec.describe "Location Database" do
     expect(location).to be_a(Hash)
     expect(location[:lat]).to be_a(Float)
     expect(location[:lng]).to be_an(Float)
+
+    expect(location[:info]).to be_an(NilClass)
+    expect(location[:options]).to be_an(NilClass)
+    expect(location[:results]).to be_an(NilClass)
   end
 end
