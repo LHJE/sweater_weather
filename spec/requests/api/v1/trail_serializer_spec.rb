@@ -13,7 +13,7 @@ RSpec.describe TrailSerializer do
     expect(rsp[:data][:type]).to be_a(String)
 
     expect(rsp[:data][:attributes]).to be_a(Hash)
-    expect(rsp[:data][:attributes][:id]).to be_a(NilClass)
+    expect(rsp[:data][:attributes][:location]).to be_a(String)
     expect(rsp[:data][:attributes][:forecast]).to be_a(Hash)
     expect(rsp[:data][:attributes][:forecast][:summary]).to be_a(String)
     expect(rsp[:data][:attributes][:forecast][:temperature]).to be_a(Numeric)
