@@ -1,49 +1,42 @@
 class Weather
   attr_reader :id,
-              :temperature,
-              :temp_high,
-              :temp_low,
-              :humidity,
-              :description,
-              :icon,
-              :sunrise,
-              :sunset,
-              :feels_like,
-              :uvi,
-              :visibility,
-              :daily,
-              :hourly
+              :current_weather,
+              :daily_weather,
+              :hourly_weather
 
   def initialize(data)
-    @temperature = data[:current][:temp]
-    @temp_high = data[:daily][0][:temp][:max]
-    @temp_low = data[:daily][0][:temp][:min]
-    @humidity = data[:current][:humidity]
-    @description = data[:current][:weather][0][:description]
-    @icon = data[:daily][0][:weather][0][:icon]
-    @sunrise = formatted_hour(data[:current][:sunrise])
-    @sunset = formatted_hour(data[:current][:sunset])
-    @feels_like = data[:current][:feels_like]
-    @uvi = data[:current][:uvi]
-    @visibility = visibility_forecast(data[:current][:visibility])
-    @hourly = hourly_forecast(data[:hourly])
-    @daily = seven_day_forecast(data[:daily])
+    @id = nil
+    @current_weather = {}
+    @current_weather[:datetime] = formatted_time(data[:current][:dt])
+    @current_weather[:sunrise] = formatted_time(data[:current][:sunrise])
+    @current_weather[:sunset] = formatted_time(data[:current][:sunset])
+    @current_weather[:temperature] = data[:current][:temp]
+    @current_weather[:feels_like] = data[:current][:feels_like]
+    @current_weather[:humidity] = data[:current][:humidity]
+    @current_weather[:uvi] = data[:current][:uvi]
+    @current_weather[:visibility] = visibility_forecast(data[:current][:visibility])
+    @current_weather[:conditions] = data[:current][:weather][0][:description]
+    @current_weather[:icon] = data[:daily][0][:weather][0][:icon]
+    @daily_weather = five_day_forecast(data[:daily])
+    @hourly_weather = eight_hour_forecast(data[:hourly])
+    # @current_weather[:max_temp] = data[:daily][0][:temp][:max]
+    # @current_weather[:min_temp] = data[:daily][0][:temp][:min]
   end
 
-  def formatted_hour(iso)
-    Time.at(iso)
+  def formatted_time(iso)
+    Time.at(iso).to_s
   end
 
-  def seven_day_forecast(data)
+  def five_day_forecast(data)
     data.map do |day|
       DailyForecast.new(day)
-    end
+    end.take(5)
   end
 
-  def hourly_forecast(data)
+  def eight_hour_forecast(data)
     data.map do |day|
       HourlyForecast.new(day)
-    end
+    end.take(8)
   end
 
   def visibility_forecast(distance)
