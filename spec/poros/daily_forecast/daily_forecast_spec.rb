@@ -290,12 +290,14 @@ describe DailyForecast do
         daily = DailyForecast.new(data[:daily][0])
 
         expect(daily).to be_a(DailyForecast)
-        expect(daily.date).to be_a(Time)
-        expect(daily.description).to be_a(String)
-        expect(daily.dew_point).to be_a(Numeric)
+        expect(daily.date).to be_a(String)
+        expect(daily.conditions).to be_a(String)
         expect(daily.icon).to be_a(String)
-        expect(daily.temp_high).to be_a(Numeric)
-        expect(daily.temp_low).to be_a(Numeric)
-        expect(daily.temperature).to be_a(Numeric)
+        expect(daily.sunrise).to be_a(String)
+        expect(daily.sunset).to be_a(String)
+        expect(daily.max_temp).to be_a(Numeric)
+        expect(daily.min_temp).to be_a(Numeric)
+        # expect(daily.dew_point).to be_a(Numeric)
+        # expect(daily.temperature).to be_a(Numeric)
     end
 end
