@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Trails do
   before :each do
-    @data = {
+    @trail_data = {
     "trails": [
         {
             "id": 7011192,
@@ -257,12 +257,27 @@ describe Trails do
     ],
     "success": 1
 }
+
+    @forecast = {:dt=>1604945486,
+                 :sunrise=>1604929101,
+                 :sunset=>1604965761,
+                 :temp=>34.3,
+                 :feels_like=>25.83,
+                 :pressure=>1011,
+                 :humidity=>66,
+                 :dew_point=>25.05,
+                 :uvi=>2.5,
+                 :clouds=>90,
+                 :visibility=>6437,
+                 :wind_speed=>6.93,
+                 :wind_deg=>40,
+                 :weather=>[{:id=>701, :main=>"Mist", :description=>"mist", :icon=>"50d"}]}
   end
 
   it "exists" do
     lat = 39.738453
     lon = -104.984853
-    trails = Trails.new(@data[:trails], lat, lon)
+    trails = Trails.new(@trail_data[:trails], @forecast, lat, lon)
 
     expect(trails).to be_a(Trails)
   end
