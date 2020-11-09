@@ -897,14 +897,19 @@ describe Weather do
     weather = Weather.new(@data)
 
     expect(weather).to be_a(Weather)
-    expect(weather.temperature).to be_a(Numeric)
-    expect(weather.humidity).to be_a(Numeric)
-    expect(weather.description).to be_a(String)
     expect(weather.daily).to be_an(Array)
-    expect(weather.daily.first).to be_an(DailyForecast)
-    expect(weather.daily.first.description).to be_a(String)
-    expect(weather.daily.first.humidity).to be_a(Numeric)
-    expect(weather.daily.first.temperature).to be_a(Numeric)
+    expect(weather.description).to be_a(String)
+    expect(weather.feels_like).to be_a(Numeric)
+    expect(weather.hourly).to be_a(Array)
+    expect(weather.humidity).to be_a(Numeric)
+    expect(weather.icon).to be_a(String)
+    expect(weather.sunrise).to be_a(Time)
+    expect(weather.sunset).to be_a(Time)
+    expect(weather.temp_high).to be_a(Numeric)
+    expect(weather.temp_low).to be_a(Numeric)
+    expect(weather.temperature).to be_a(Numeric)
+    expect(weather.uvi).to be_a(Numeric)
+    expect(weather.visibility).to be_a(Numeric)
   end
 
   xit "calculates seven_day_forecast" do
