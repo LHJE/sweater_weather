@@ -7,6 +7,6 @@ RSpec.describe "Trails Database" do
 
     trails = TrailsDatabase.get_trails(lat, lon)
 
-    expect(trails).to be_a(Hash)
+    expect(trails).to be_a(Array)
   end
 end
