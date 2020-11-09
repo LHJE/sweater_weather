@@ -11,6 +11,6 @@ class LocationDatabase
       faraday.headers['X-API-Key'] = key
     end
     results = conn.get(uri)
-    JSON.parse(results.body, symbolize_names: true)[:results][0][:locations][0][:latLng]
+    JSON.parse(results.body, symbolize_names: true)
   end
 end
