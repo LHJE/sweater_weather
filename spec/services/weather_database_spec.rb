@@ -6,7 +6,6 @@ RSpec.describe "Weather Database" do
     lon = -104.984853
 
     weather = WeatherDatabase.get_weather(lat, lon)
-    require "pry"; binding.pry
 
     expect(weather).to be_a(Hash)
     expect(weather[:current]).to be_a(Hash)
@@ -16,7 +15,7 @@ RSpec.describe "Weather Database" do
 
     expect(weather[:current][:humidity]).to be_a(Numeric)
     expect(weather[:current][:weather][0][:description]).to be_a(String)
-    expect(weather[:daily][0][:weather][:icon]).to be_a(String)
+    expect(weather[:daily][0][:weather][0][:icon]).to be_a(String)
     expect(weather[:current][:weather]).to be_an(Array)
     expect(weather[:current][:weather][0]).to be_a(Hash)
     expect(weather[:current][:sunrise]).to be_a(Numeric)
@@ -38,9 +37,7 @@ RSpec.describe "Weather Database" do
 
     expect(weather[:hourly][0]).to be_a(Hash)
     expect(weather[:hourly][0][:dt]).to be_a(Numeric)
-    expect(weather[:hourly][0][:temp][:day]).to be_a(Numeric)
-    expect(weather[:hourly][0][:temp][:min]).to be_a(Numeric)
-    expect(weather[:hourly][0][:temp][:max]).to be_a(Numeric)
+    expect(weather[:hourly][0][:temp]).to be_a(Numeric)
     expect(weather[:hourly][0][:dew_point]).to be_a(Numeric)
     expect(weather[:hourly][0][:weather]).to be_an(Array)
     expect(weather[:hourly][0][:weather][0]).to be_a(Hash)
@@ -48,6 +45,5 @@ RSpec.describe "Weather Database" do
     expect(weather[:hourly][0][:weather][0][:icon]).to be_a(String)
 
     expect(weather[:minutely]).to be_a(NilClass)
-
   end
 end
