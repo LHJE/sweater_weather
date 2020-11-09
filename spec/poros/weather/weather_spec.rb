@@ -891,25 +891,25 @@ describe Weather do
                     :pop=>0}]
 
   }
-
   end
+
   it "exists" do
     weather = Weather.new(@data)
 
     expect(weather).to be_a(Weather)
-    expect(weather.daily).to be_an(Array)
-    expect(weather.description).to be_a(String)
-    expect(weather.feels_like).to be_a(Numeric)
-    expect(weather.hourly).to be_a(Array)
-    expect(weather.humidity).to be_a(Numeric)
-    expect(weather.icon).to be_a(String)
-    expect(weather.sunrise).to be_a(Time)
-    expect(weather.sunset).to be_a(Time)
-    expect(weather.temp_high).to be_a(Numeric)
-    expect(weather.temp_low).to be_a(Numeric)
-    expect(weather.temperature).to be_a(Numeric)
-    expect(weather.uvi).to be_a(Numeric)
-    expect(weather.visibility).to be_a(Numeric)
+    expect(weather.current_weather[:conditions]).to be_a(String)
+    expect(weather.current_weather[:feels_like]).to be_a(Numeric)
+    expect(weather.current_weather[:humidity]).to be_a(Numeric)
+    expect(weather.current_weather[:icon]).to be_a(String)
+    expect(weather.current_weather[:sunrise]).to be_a(String)
+    expect(weather.current_weather[:sunset]).to be_a(String)
+    expect(weather.current_weather[:temperature]).to be_a(Numeric)
+    expect(weather.current_weather[:uvi]).to be_a(Numeric)
+    expect(weather.current_weather[:visibility]).to be_a(Numeric)
+    expect(weather.daily_weather).to be_an(Array)
+    expect(weather.hourly_weather).to be_a(Array)
+    # expect(weather.current_weather[:max_temp]).to be_a(Numeric)
+    # expect(weather.current_weather[:min_temp]).to be_a(Numeric)
   end
 
   xit "calculates seven_day_forecast" do
