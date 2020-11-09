@@ -4,7 +4,7 @@ class WeatherFacade
     Weather.new(weather)
   end
 
-  def self.get_trail_forecast(lat, lon)
-    WeatherDatabase.get_trail_weather(lat, lon)
+  def self.get_current_forecast(lat, lon)
+    WeatherDatabase.get_current_weather(lat, lon)
   end
 end
