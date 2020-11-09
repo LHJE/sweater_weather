@@ -260,7 +260,9 @@ describe Trails do
   end
 
   it "exists" do
-    trails = Trails.new(@data)
+    lat = 39.738453
+    lon = -104.984853
+    trails = Trails.new(@data[:trails], lat, lon)
 
     expect(trails).to be_a(Trails)
   end
