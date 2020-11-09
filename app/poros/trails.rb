@@ -4,7 +4,6 @@ class Trails
               :trails
 
   def initialize(data, forecast, lat, lon)
-    @id = nil
     @forecast = {}
     @forecast[:summary] = forecast[:weather][0][:description]
     @forecast[:temperature] = forecast[:temp]
