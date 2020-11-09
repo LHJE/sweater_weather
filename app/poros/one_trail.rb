@@ -11,7 +11,7 @@ class OneTrail
     @summary = data[:summary]
     @difficulty = data[:difficulty]
     @location = data[:location]
-    @distance_to_trail = get_distance([lat, lon], [data[:latitude], data[:longitude]])
+    @distance_to_trail = get_distance([lat, lon], [data[:latitude], data[:longitude]]).to_s
   end
 
   def get_distance(starting_location, ending_location)
