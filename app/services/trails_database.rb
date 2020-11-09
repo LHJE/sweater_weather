@@ -11,7 +11,6 @@ class TrailsDatabase
       faraday.headers['X-API-Key'] = key
     end
     results = conn.get(uri)
-    require "pry"; binding.pry
-    JSON.parse(results.body, symbolize_names: true)
+    JSON.parse(results.body, symbolize_names: true)[:trails]
   end
 end
