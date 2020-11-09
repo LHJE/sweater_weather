@@ -6,8 +6,8 @@ class Trails
   def initialize(data, forecast, lat, lon)
     @id = nil
     @forecast = {}
-    @forecast[:summary] = forecast[:conditions]
-    @forecast[:tempurature] = forecast[:tempurature]
+    @forecast[:summary] = forecast[:weather][0][:description]
+    @forecast[:tempurature] = forecast[:temp]
     @trails = format_trails(data, lat, lon)
   end
 
