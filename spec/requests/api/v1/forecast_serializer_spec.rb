@@ -46,13 +46,4 @@ RSpec.describe ForecastSerializer do
     expect(rsp[:data][:attributes][:hourly_weather][0][:conditions]).to be_a(String)
     expect(rsp[:data][:attributes][:hourly_weather][0][:icon]).to be_a(String)
   end
-
-  xit "Sends weather forcast data" do
-    get '/api/v1/backgrounds?location=denver,co'
-    expect(response).to be_successful
-
-    rsp = JSON.parse(response.body, symbolize_names: :true)
-
-    expect(rsp).to be_a(Hash)
-  end
 end
