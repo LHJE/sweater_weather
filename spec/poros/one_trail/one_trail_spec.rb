@@ -28,7 +28,9 @@ describe OneTrail do
   end
 
   it "exists" do
-    one_trail = OneTrail.new(@data)
+    lat = 39.738453
+    lon = -104.984853
+    one_trail = OneTrail.new(@data, lat, lon)
 
     expect(one_trail).to be_a(OneTrail)
   end
