@@ -30,4 +30,23 @@ class Weather
     @daily = seven_day_forecast(data[:daily])
   end
 
+  def formatted_hour(iso)
+    Time.at(iso)
+  end
+
+  def seven_day_forecast(data)
+    data.map do |day|
+      DailyForecast.new(day)
+    end
+  end
+
+  def hourly_forecast(data)
+    data.map do |day|
+      HourlyForecast.new(day)
+    end
+  end
+
+  def visibility_forecast(distance)
+    Unitwise(distance, 'kilometer').convert_to('mile')[:value].to_f
+  end
 end
