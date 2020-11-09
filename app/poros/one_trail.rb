@@ -6,7 +6,6 @@ class OneTrail
               :location
 
   def initialize(data, lat, lon)
-    @id = nil
     @name = data[:name]
     @summary = data[:summary]
     @difficulty = data[:difficulty]
