@@ -9,7 +9,7 @@ RSpec.describe 'Search Facade' do
   end
 
   it "It returns driving distance between two places" do
-    place_1 = [39.738453, -104.984853]
+    place_1 = "N Sherman St Denver CO "
     place_2 = [39.9388, -105.2582]
 
     distance = SearchFacade.find_distance(place_1, place_2)
