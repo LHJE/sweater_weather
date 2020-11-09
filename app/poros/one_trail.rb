@@ -8,7 +8,7 @@ class OneTrail
   def initialize(data, lat, lon)
     @id = nil
     @name = data[:name]
-    @summit = data[:summary]
+    @summary = data[:summary]
     @difficulty = data[:difficulty]
     @location = data[:location]
     @distance_to_trail = get_distance([lat, lon], [data[:latitude], data[:longitude]])
