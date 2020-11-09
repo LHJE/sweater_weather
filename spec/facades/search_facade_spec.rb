@@ -14,6 +14,6 @@ RSpec.describe 'Search Facade' do
 
     distance = SearchFacade.find_distance(place_1, place_2)
 
-    expect(distance).to eq(26.3)
+    expect(distance).to eq(23.166)
   end
 end
