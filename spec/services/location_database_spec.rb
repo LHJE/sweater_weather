@@ -13,12 +13,20 @@ RSpec.describe "Location Database" do
     expect(location[:results]).to be_an(NilClass)
   end
 
+  it "Can return address for  geolocations" do
+    place = [39.738453, -104.984853]
+
+    address = LocationDatabase.find_closest_address(place)
+
+    expect(address).to be_a(Hash)
+  end
+
   it "Can return distance for two geolocations" do
-    place_1 = [39.738453, -104.984853]
-    place_2 = [39.9388, -105.2582]
+    starting_address = "N Sherman St Denver CO "
+    ending_address = "4017 Eldorado Springs Dr Boulder CO "
 
-    distance = LocationDatabase.get_trails(place_1, place_2)
+    distance = LocationDatabase.find_distance(starting_address, ending_address)
 
-    expect(distance).to be_a(Hash)
+    expect(distance).to eq(23.166)
   end
 end
