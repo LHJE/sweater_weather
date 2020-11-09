@@ -33,6 +33,7 @@ gem 'figaro', '~> 1.2.0'
 gem 'jquery-rails'
 gem 'fast_jsonapi'
 gem 'unitwise'
+gem 'compass_point'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
