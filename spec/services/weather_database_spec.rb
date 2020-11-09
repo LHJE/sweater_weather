@@ -5,7 +5,7 @@ RSpec.describe "Weather Database" do
     lat = 39.738453
     lon = -104.984853
 
-    weather = WeatherDatabase.get_weather(lat, lon)
+    weather = WeatherDatabase.get_full_weather(lat, lon)
 
     expect(weather).to be_a(Hash)
     expect(weather[:current]).to be_a(Hash)
