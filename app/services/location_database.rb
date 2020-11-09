@@ -6,6 +6,12 @@ class LocationDatabase
     get_results(url, key, uri)[:results][0][:locations][0][:latLng]
   end
 
+  def self.find_closest_address(location)
+    key = ENV['MAP_API_KEY']
+    url = ENV['MAP_URL']
+    uri = "/geocoding/v1/address?key=#{key}&location=#{location[0]},#{location[1]}&includeRoadMetadata=true&includeNearestIntersection=true"
+    get_results(url, key, uri)[:results][0][:locations][0]
+  end
 
   def self.find_distance(starting_location, ending_location)
     key = ENV['MAP_API_KEY']
