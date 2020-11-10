@@ -17,5 +17,4 @@ class Trails
       OneTrail.new(day, lat, lon)
     end
   end
-
 end
