@@ -107,4 +107,38 @@ RSpec.describe UserSerializer do
     expect(rsp).to be_a(Hash)
     expect(rsp[:error]).to eq("Password can't be blank, Password can't be blank, and Email has already been taken")
   end
+
+  it "Does not send user information if the user doesn't fill in password" do
+    json = {
+            "email": "rasdg@a.com",
+            "password": "",
+            "password_confirmation": "ajsdfgajsldhf"
+          }
+
+
+    post '/api/v1/users', params: json.to_json
+    expect(response).to_not be_successful
+
+    rsp = JSON.parse(response.body, symbolize_names: :true)
+
+    expect(rsp).to be_a(Hash)
+    expect(rsp[:error]).to eq("Password can't be blank and Password can't be blank")
+  end
+
+  it "Does not send user information if the user doesn't fill in password" do
+    json = {
+            "email": "rasdg@a.com",
+            "password": "ajsdfgajsldhf",
+            "password_confirmation": ""
+          }
+
+
+    post '/api/v1/users', params: json.to_json
+    expect(response).to_not be_successful
+
+    rsp = JSON.parse(response.body, symbolize_names: :true)
+
+    expect(rsp).to be_a(Hash)
+    expect(rsp[:error]).to eq("Password confirmation doesn't match Password and Password confirmation can't be blank")
+  end
 end
