@@ -277,7 +277,9 @@ describe Trails do
   it "exists" do
     lat = 39.738453
     lon = -104.984853
-    trails = Trails.new(@trail_data[:trails], @forecast, lat, lon)
+    location = "denver,co"
+    
+    trails = Trails.new(@trail_data[:trails], @forecast, lat, lon, location)
 
     expect(trails).to be_a(Trails)
   end

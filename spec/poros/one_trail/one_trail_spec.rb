@@ -30,9 +30,7 @@ describe OneTrail do
   it "exists" do
     lat = 39.738453
     lon = -104.984853
-    location = "N Sherman St Denver CO "
-    
-    one_trail = OneTrail.new(@data, lat, lon, location)
+    one_trail = OneTrail.new(@data, lat, lon)
 
     expect(one_trail).to be_a(OneTrail)
   end
