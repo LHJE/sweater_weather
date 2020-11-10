@@ -86,7 +86,7 @@ RSpec.describe RoadTripSerializer do
     expect(response).to be_successful
 
     rsp = JSON.parse(response.body, symbolize_names: :true)
-    require "pry"; binding.pry
+
     expect(rsp).to be_a(Hash)
     expect(rsp[:data]).to be_a(Hash)
     expect(rsp[:data][:id]).to be_a(NilClass)
