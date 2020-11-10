@@ -41,4 +41,93 @@ RSpec.describe SessionSerializer do
     expect(rsp[:error]).to eq("Error: Email or Password Incorrect")
   end
 
+  it "Sends error if the password is correct but capitalized" do
+    json = {
+            "email": "rt@a.com",
+            "password": "A",
+          }
+
+    post '/api/v1/sessions', params: json.to_json
+    expect(response).to_not be_successful
+
+    rsp = JSON.parse(response.body, symbolize_names: :true)
+
+    expect(rsp).to be_a(Hash)
+    expect(rsp[:error]).to eq("Error: Email or Password Incorrect")
+  end
+
+  it "Sends user data even if the email is fully capitalized" do
+    json = {
+            "email": "RT@A.COM",
+            "password": "a",
+          }
+
+    post '/api/v1/sessions', params: json.to_json
+    expect(response).to_not be_successful
+
+    rsp = JSON.parse(response.body, symbolize_names: :true)
+
+    expect(rsp).to be_a(Hash)
+    expect(rsp[:error]).to eq("Error: Email or Password Incorrect")
+  end
+
+  it "Sends error if the password is not correct" do
+    json = {
+            "email": "rt@a.com",
+            "password": "aasdfadsf",
+          }
+
+    post '/api/v1/sessions', params: json.to_json
+    expect(response).to_not be_successful
+
+    rsp = JSON.parse(response.body, symbolize_names: :true)
+
+    expect(rsp).to be_a(Hash)
+    expect(rsp[:error]).to eq("Error: Email or Password Incorrect")
+  end
+
+  it "Sends error if the password is blank" do
+    json = {
+            "email": "rt@a.com",
+            "password": "",
+          }
+
+    post '/api/v1/sessions', params: json.to_json
+    expect(response).to_not be_successful
+
+    rsp = JSON.parse(response.body, symbolize_names: :true)
+
+    expect(rsp).to be_a(Hash)
+    expect(rsp[:error]).to eq("Error: Email or Password Incorrect")
+  end
+
+  it "Sends error if the email is blank" do
+    json = {
+            "email": "",
+            "password": "asdfasdf",
+          }
+
+    post '/api/v1/sessions', params: json.to_json
+    expect(response).to_not be_successful
+
+    rsp = JSON.parse(response.body, symbolize_names: :true)
+
+    expect(rsp).to be_a(Hash)
+    expect(rsp[:error]).to eq("Error: Email or Password Incorrect")
+  end
+
+  it "Sends error if the email and password is blank" do
+    json = {
+            "email": "",
+            "password": "",
+          }
+
+    post '/api/v1/sessions', params: json.to_json
+    expect(response).to_not be_successful
+
+    rsp = JSON.parse(response.body, symbolize_names: :true)
+
+    expect(rsp).to be_a(Hash)
+    expect(rsp[:error]).to eq("Error: Email or Password Incorrect")
+  end
 end
