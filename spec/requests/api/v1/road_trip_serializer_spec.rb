@@ -36,7 +36,7 @@ RSpec.describe RoadTripSerializer do
     expect(rsp).to be_a(Hash)
     expect(rsp[:data]).to be_a(Hash)
     expect(rsp[:data][:id]).to be_a(NilClass)
-    expect(rsp[:data][:type]).to eq("roadtrip")
+    expect(rsp[:data][:type]).to eq("road_trip")
 
     expect(rsp[:data][:attributes]).to be_a(Hash)
     expect(rsp[:data][:attributes][:start_city]).to be_a(String)
