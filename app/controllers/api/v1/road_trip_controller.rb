@@ -6,11 +6,8 @@ class Api::V1::RoadTripController < ApplicationController
     if user.nil?
       render json: {error: "API Key Not In Our System"} , status: 401
     else
-      require "pry"; binding.pry
-      
-      render json: RoadTripSerializer.new(user), status: 201
+      road_trip = RoadTripFacade.get_road_trip(trip_params)
+      render json: RoadTripSerializer.new(road_trip), status: 201
     end
   end
-
-
 end
