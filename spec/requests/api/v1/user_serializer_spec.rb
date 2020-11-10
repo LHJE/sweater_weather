@@ -8,7 +8,7 @@ RSpec.describe UserSerializer do
             "password_confirmation": "password"
           }
 
-    post '/api/v1/users', params: json
+    post '/api/v1/users', params: json.to_json
     expect(response).to be_successful
 
     rsp = JSON.parse(response.body, symbolize_names: :true)
