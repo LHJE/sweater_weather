@@ -3,6 +3,7 @@ class DailyForecast
               :conditions,
               :max_temp,
               :min_temp,
+              :icon,
               :sunrise,
               :sunset
 
@@ -13,8 +14,7 @@ class DailyForecast
     @max_temp = data[:temp][:max]
     @min_temp = data[:temp][:min]
     @conditions = data[:weather][0][:description]
-    # @temperature = data[:temp][:day]
-    # @dew_point = data[:dew_point]
+    @icon = data[:weather][0][:icon]
   end
 
   def formatted_date(iso)
