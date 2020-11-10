@@ -19,8 +19,14 @@ class RoadTrip
 
   def get_future_weather_forecast(time, forecasts)
     future_time = Time.new + time
-    future_forecast = forecasts.find do |forecast|
-      forecast.hour.to_time.hour == future_time.hour + 1
+    if future_time.min < 31
+      future_forecast = forecasts.find do |forecast|
+        forecast.hour.to_time.hour == future_time.hour
+      end
+    else
+      future_forecast = forecasts.find do |forecast|
+        forecast.hour.to_time.hour == future_time.hour + 1
+      end
     end
     {temperature: future_forecast.temperature, conditions: future_forecast.conditions}
   end
