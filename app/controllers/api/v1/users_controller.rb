@@ -14,12 +14,11 @@ class Api::V1::UsersController < ApplicationController
 
   def login
     user_params = JSON.parse(request.raw_post, symbolize_names: true)
-    user = User.where(email: user_params[:email]).first
-    if user == nil || user.authenticate(params[:password])
-      require "pry"; binding.pry
-      render json: {error: user.errors.full_messages.to_sentence} , status: 400
-    else
+    user = User.find_by(email: user_params[:email])
+    if user && user.authenticate(user_params[:password])
       render json: UserSerializer.new(user), status: 200
+    else
+      render json: {error: "Error: Email or Password Incorrect"} , status: 400
     end
   end
 end
