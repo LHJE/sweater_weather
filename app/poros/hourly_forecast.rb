@@ -1,17 +1,16 @@
 class HourlyForecast
-  attr_reader :id,
-              :temperature,
+  attr_reader :temperature,
               :hour,
-              :icon
+              :wind_speed,
+              :wind_direction,
+              :conditions
 
   def initialize(data)
-    @id = nil
     @hour = formatted_time(data[:dt])
     @temperature = data[:temp]
     @wind_speed = data[:wind_speed]
     @wind_direction = readable_compass(data[:wind_deg])
     @conditions = data[:weather][0][:description]
-    @icon = data[:weather][0][:icon]
   end
 
   def formatted_time(iso)
