@@ -19,8 +19,6 @@ class Weather
     @current_weather[:icon] = data[:daily][0][:weather][0][:icon]
     @daily_weather = five_day_forecast(data[:daily])
     @hourly_weather = eight_hour_forecast(data[:hourly])
-    # @current_weather[:max_temp] = data[:daily][0][:temp][:max]
-    # @current_weather[:min_temp] = data[:daily][0][:temp][:min]
   end
 
   def formatted_time(iso)
