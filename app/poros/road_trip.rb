@@ -1,5 +1,5 @@
 class RoadTrip
-
+  include ActionView::Helpers::DateHelper
   attr_reader :id,
               :start_city,
               :end_city,
@@ -17,5 +17,11 @@ class RoadTrip
     distance_of_time_in_words(time)
   end
 
-
+  def get_future_weather_forecast(time, forecasts)
+    future_time = Time.new + time
+    future_forecast = forecasts.find do |forecast|
+      forecast.hour.to_time.hour == future_time.hour + 1
+    end
+    {temperature: future_forecast.temperature, conditions: future_forecast.conditions}
+  end
 end
