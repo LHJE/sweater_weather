@@ -583,7 +583,11 @@ describe HourlyForecast do
         hourly = HourlyForecast.new(data[:hourly][0])
 
         expect(hourly).to be_a(HourlyForecast)
-        expect(hourly.temperature).to be_a(Numeric)
         expect(hourly.hour).to be_a(String)
+        expect(hourly.temperature).to be_a(Numeric)
+        expect(hourly.wind_speed).to be_a(String)
+        expect(hourly.wind_direction).to be_a(String)
+        expect(hourly.conditions).to be_a(String)
+        expect(hourly.icon).to be_a(String)
     end
 end
