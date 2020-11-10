@@ -47,7 +47,7 @@ RSpec.describe "Weather Database" do
     expect(weather[:minutely]).to be_a(NilClass)
   end
 
-  it "It returns trail forecast" do
+  it "It returns current forecast" do
     lat = 39.738453
     lon = -104.984853
 
@@ -73,5 +73,47 @@ RSpec.describe "Weather Database" do
     expect(weather[:weather][0][:main]).to be_a(String)
     expect(weather[:weather][0][:description]).to be_a(String)
     expect(weather[:weather][0][:icon]).to be_a(String)
+
+    expect(weather[:minutely]).to be_a(NilClass)
+    expect(weather[:hourly]).to be_a(NilClass)
+  end
+
+  it "It returns hourly forecast" do
+    lat = 39.738453
+    lon = -104.984853
+
+    weather = WeatherDatabase.get_hourly_weather(lat, lon)
+
+    expect(weather).to be_a(Hash)
+    expect(weather[:lat]).to be_a(Numeric)
+    expect(weather[:lon]).to be_a(Numeric)
+    expect(weather[:timezone]).to be_a(String)
+    expect(weather[:timezone_offset]).to be_a(Numeric)
+
+    expect(weather[:hourly]).to be_a(Array)
+    expect(weather[:hourly].count).to eq(48)
+    expect(weather[:hourly][0]).to be_a(Hash)
+    expect(weather[:hourly][0][:dt]).to be_a(Numeric)
+    expect(weather[:hourly][0][:temp]).to be_a(Numeric)
+    expect(weather[:hourly][0][:feels_like]).to be_a(Numeric)
+    expect(weather[:hourly][0][:pressure]).to be_a(Numeric)
+    expect(weather[:hourly][0][:humidity]).to be_a(Numeric)
+    expect(weather[:hourly][0][:dew_point]).to be_a(Numeric)
+    expect(weather[:hourly][0][:clouds]).to be_a(Numeric)
+    expect(weather[:hourly][0][:visibility]).to be_a(Numeric)
+    expect(weather[:hourly][0][:wind_speed]).to be_a(Numeric)
+    expect(weather[:hourly][0][:wind_deg]).to be_a(Numeric)
+    expect(weather[:hourly][0][:pop]).to be_a(Numeric)
+
+    expect(weather[:hourly][0][:weather]).to be_a(Array)
+    expect(weather[:hourly][0][:weather][0]).to be_a(Hash)
+    expect(weather[:hourly][0][:weather][0][:id]).to be_a(Numeric)
+    expect(weather[:hourly][0][:weather][0][:main]).to be_a(String)
+    expect(weather[:hourly][0][:weather][0][:description]).to be_a(String)
+    expect(weather[:hourly][0][:weather][0][:icon]).to be_a(String)
+
+    expect(weather[:minutely]).to be_a(NilClass)
+    expect(weather[:daily]).to be_a(NilClass)
+    expect(weather[:current]).to be_a(NilClass)
   end
 end
