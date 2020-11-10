@@ -9,6 +9,22 @@ RSpec.describe RoadTripSerializer do
     json = {
               "origin": "Denver,CO",
               "destination": "Pueblo,CO",
+              "api_key": "afds"
+            }
+
+    post '/api/v1/road_trip', params: json.to_json
+    expect(response).to_not be_successful
+
+    rsp = JSON.parse(response.body, symbolize_names: :true)
+
+    expect(rsp).to be_a(Hash)
+    expect(rsp[:error]).to eq("API Key Not In Our System")
+  end
+
+  it "Sends user information if the user is able to be created" do
+    json = {
+              "origin": "Denver,CO",
+              "destination": "Pueblo,CO",
               "api_key": "9EjiyN2w8u1fETO20rWVDA=="
             }
 
