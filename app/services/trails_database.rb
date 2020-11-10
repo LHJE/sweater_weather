@@ -2,7 +2,7 @@ class TrailsDatabase
   def self.get_trails(lat, long)
     key = ENV['TRAILS_API_KEY']
     url = ENV['TRAILS_URL']
-    uri = "/get-trails?lat=#{lat}&lon=#{long}&maxDistance=30&key=#{key}"
+    uri = "get-trails?lat=#{lat}&lon=#{long}&maxDistance=30&key=#{key}"
     get_results(url, key, uri)
   end
 
