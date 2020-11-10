@@ -1,8 +1,10 @@
 class Api::V1::UsersController < ApplicationController
 
   def create
-    user = User.new(params[:email], params[:password], params[:password_confirmation])
-  require "pry"; binding.pry
+
+    user_data = JSON.parse(request.raw_post)
+    user = User.new(user_data)
+    render json: UserSerializer.new(user)
   end
 
 end
