@@ -38,8 +38,24 @@ RSpec.describe UserSerializer do
     expect(response).to_not be_successful
 
     rsp = JSON.parse(response.body, symbolize_names: :true)
-# require "pry"; binding.pry
+
     expect(rsp).to be_a(Hash)
     expect(rsp[:error]).to eq("Email has already been taken")
+  end
+
+  it "Sends does not user information if the user does not have matching passwords" do
+    json = {
+            "email": "rt@a.com",
+            "password": "password",
+            "password_confirmation": "ajsdfgajsldhf"
+          }
+
+    post '/api/v1/users', params: json.to_json
+    expect(response).to_not be_successful
+
+    rsp = JSON.parse(response.body, symbolize_names: :true)
+
+    expect(rsp).to be_a(Hash)
+    expect(rsp[:error]).to eq( "Password confirmation doesn't match Password and Email has already been taken")
   end
 end
