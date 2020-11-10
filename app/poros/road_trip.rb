@@ -13,4 +13,9 @@ class RoadTrip
     @weather_at_eta = get_future_weather_forecast(route[:realTime], forecast)
   end
 
+  def get_route_time(time)
+    distance_of_time_in_words(time)
+  end
+
+
 end
