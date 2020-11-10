@@ -35,18 +35,11 @@ RSpec.describe UserSerializer do
           }
 
     post '/api/v1/users', params: json.to_json
-    require "pry"; binding.pry
-    expect(response).to be_unsuccessful
+    expect(response).to_not be_successful
 
     rsp = JSON.parse(response.body, symbolize_names: :true)
-
+# require "pry"; binding.pry
     expect(rsp).to be_a(Hash)
-    expect(rsp[:data]).to be_a(Hash)
-    expect(rsp[:data][:id]).to be_a(String)
-    expect(rsp[:data][:type]).to eq("user")
-
-    expect(rsp[:data][:attributes]).to be_a(Hash)
-    expect(rsp[:data][:attributes][:email]).to be_a(String)
-    expect(rsp[:data][:attributes][:api_key]).to be_a(String)
+    expect(rsp[:error]).to eq("Email has already been taken")
   end
 end
