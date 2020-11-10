@@ -27,7 +27,7 @@ RSpec.describe UserSerializer do
     expect(rsp[:data][:attributes][:api_key]).to be_a(String)
   end
 
-  it "Sends does not user information if the user has a matching email address" do
+  it "Does not send user information if the user has a matching email address" do
     json = {
             "email": "rt@a.com",
             "password": "password",
@@ -43,7 +43,7 @@ RSpec.describe UserSerializer do
     expect(rsp[:error]).to eq("Email has already been taken")
   end
 
-  it "Sends does not user information if the user does not have matching passwords" do
+  it "Does not send user information if the user does not have matching passwords" do
     json = {
             "email": "rt@a.com",
             "password": "password",
@@ -57,5 +57,21 @@ RSpec.describe UserSerializer do
 
     expect(rsp).to be_a(Hash)
     expect(rsp[:error]).to eq( "Password confirmation doesn't match Password and Email has already been taken")
+  end
+
+  it "Does not send user information if the user does not have matching passwords" do
+    json = {
+            "email": "rt@a.com",
+            "password": "password",
+            "password_confirmation": ""
+          }
+
+    post '/api/v1/users', params: json.to_json
+    expect(response).to_not be_successful
+
+    rsp = JSON.parse(response.body, symbolize_names: :true)
+
+    expect(rsp).to be_a(Hash)
+    expect(rsp[:error]).to eq("Password confirmation doesn't match Password, Password confirmation can't be blank, and Email has already been taken")
   end
 end
