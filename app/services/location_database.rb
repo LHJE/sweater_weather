@@ -13,11 +13,11 @@ class LocationDatabase
     get_results(url, key, uri)[:results][0][:locations][0]
   end
 
-  def self.find_distance(starting_location, ending_location)
+  def self.find_route(starting_location, ending_location)
     key = ENV['MAP_API_KEY']
     url = ENV['MAP_URL']
     uri = "/directions/v2/route?key=#{key}&from=#{starting_location}&to=#{ending_location}"
-    get_results(url, key, uri)[:route][:distance]
+    get_results(url, key, uri)[:route]
   end
 
   def self.get_results(url, key, uri)
