@@ -14,7 +14,7 @@ class OneTrail
   end
 
   def get_distance(starting_location, ending_location)
-    SearchFacade.find_distance(starting_location, ending_location)
+    SearchFacade.find_route_with_lat_long(starting_location, ending_location)[:distance]
   end
 
 end

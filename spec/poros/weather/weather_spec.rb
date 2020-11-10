@@ -908,26 +908,5 @@ describe Weather do
     expect(weather.current_weather[:visibility]).to be_a(Numeric)
     expect(weather.daily_weather).to be_an(Array)
     expect(weather.hourly_weather).to be_a(Array)
-    # expect(weather.current_weather[:max_temp]).to be_a(Numeric)
-    # expect(weather.current_weather[:min_temp]).to be_a(Numeric)
   end
-
-  xit "calculates seven_day_forecast" do
-    require "pry"; binding.pry
-    seven_day = seven_day_forecast(@data[:daily])
-
-  end
-
-  xit "calculates hourly_forecast" do
-    hourly = hourly_forecast(@data[:hourly])
-
-    require "pry"; binding.pry
-
-  end
-
-  xit "calculates visibility" do
-    vis = visibility_forecast(@data[:current][:visibility])
-    require "pry"; binding.pry
-  end
-
 end

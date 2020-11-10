@@ -25,8 +25,8 @@ RSpec.describe "Location Database" do
     starting_address = "N Sherman St Denver CO "
     ending_address = "4017 Eldorado Springs Dr Boulder CO "
 
-    distance = LocationDatabase.find_distance(starting_address, ending_address)
+    route = LocationDatabase.find_route(starting_address, ending_address)
 
-    expect(distance).to eq(23.166)
+    expect(route[:distance]).to eq(23.166)
   end
 end
