@@ -292,7 +292,6 @@ describe DailyForecast do
         expect(daily).to be_a(DailyForecast)
         expect(daily.date).to be_a(String)
         expect(daily.conditions).to be_a(String)
-        expect(daily.icon).to be_a(String)
         expect(daily.sunrise).to be_a(String)
         expect(daily.sunset).to be_a(String)
         expect(daily.max_temp).to be_a(Numeric)
