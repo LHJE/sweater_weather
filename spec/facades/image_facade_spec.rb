@@ -13,9 +13,9 @@ RSpec.describe 'Image Facade' do
     expect(image.credit[:author]).to be_a(String)
     expect(image.credit[:author_profile]).to be_a(String)
 
-    expect(image.dimensions).to be_a(Array)
-    expect(image.dimensions[0]).to be_a(Numeric)
-    expect(image.dimensions[1]).to be_a(Numeric)
+    expect(image.dimensions).to be_a(Hash)
+    expect(image.dimensions[:width]).to be_a(Numeric)
+    expect(image.dimensions[:height]).to be_a(Numeric)
 
     expect(image.image_url).to be_a(String)
 
