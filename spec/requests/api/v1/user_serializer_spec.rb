@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe UserSerializer do
+  before :each do
+    @user = User.create(email: 'rt@a.com', password: 'a', password_confirmation: 'a', api_key: "9EjiyN2w8u1fETO20rWVDA==")
+  end
   it "Sends user information" do
     json = {
             "email": "whatever@example.com",
