@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get '/trails', to: 'trails#show'
       get '/backgrounds', to: 'image#show'
       post '/users', to: 'users#create'
+      post '/sessions', to: 'users#login'
     end
   end
 end
