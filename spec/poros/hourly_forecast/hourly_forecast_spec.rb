@@ -585,6 +585,5 @@ describe HourlyForecast do
         expect(hourly).to be_a(HourlyForecast)
         expect(hourly.temperature).to be_a(Numeric)
         expect(hourly.hour).to be_a(String)
-        expect(hourly.icon).to be_a(String)
     end
 end
