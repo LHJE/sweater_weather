@@ -14,7 +14,7 @@ class HourlyForecast
   end
 
   def formatted_time(iso)
-    Time.at(iso).to_s.at(11..18)
+    Time.at(iso).to_s.at(0..18)
   end
 
   def readable_compass(degrees)
