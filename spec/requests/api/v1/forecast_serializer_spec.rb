@@ -36,7 +36,7 @@ RSpec.describe ForecastSerializer do
     expect(rsp[:data][:attributes][:hourly_weather][0]).to be_a(Hash)
     expect(rsp[:data][:attributes][:hourly_weather][0][:hour]).to be_a(String)
     expect(rsp[:data][:attributes][:hourly_weather][0][:temperature]).to be_a(Numeric)
-    expect(rsp[:data][:attributes][:hourly_weather][0][:wind_speed]).to be_a(Numeric)
+    expect(rsp[:data][:attributes][:hourly_weather][0][:wind_speed]).to be_a(String)
     expect(rsp[:data][:attributes][:hourly_weather][0][:wind_direction]).to be_a(String)
     expect(rsp[:data][:attributes][:hourly_weather][0][:conditions]).to be_a(String)
   end
