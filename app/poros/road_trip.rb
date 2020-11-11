@@ -26,14 +26,16 @@ class RoadTrip
   def get_route_time(time)
     if time.nil?
       "This destination is not reachable"
+    elsif time == 0
+      "This destination is not reachable.  You may have typed the name in incorrectly.  Perhaps you are already there?"
     else
       distance_of_time_in_words(time)
     end
   end
 
   def get_future_weather_forecast(time, forecasts)
-    if time.nil?
-      {temperature: forecasts[0].temperature, conditions: forecasts[0].conditions}
+    if time == 0 || time.nil?
+      "There wasn't enough information to tell you the forecast."
     else
       if time > 172800
         "There is no forcast that far into the future"
