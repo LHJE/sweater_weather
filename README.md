@@ -248,7 +248,7 @@ Please make sure to update tests as appropriate.
 2020-11-11: v 1.0
 
 ## License
-Copyright 2020 Philip DeFraties, Luke Hunter James-Erickson
+Copyright 2020 Luke Hunter James-Erickson
 
 Permission is hereby granted to any person obtaining a copy of this software and associated materials to make use of the software and associated materials according to the terms of the MIT License (see included file `LICENSE_MIT`) IF AND ONLY IF they have not read any portion of this file.
 
