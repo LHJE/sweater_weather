@@ -68,6 +68,8 @@ class RoadTrip
     forecasts.find do |forecast|
       if forecast.hour.split(" ")[0] == date
         forecast.hour.to_time.hour == future_time_hour
+      else
+        "There is no forcast that far into the future"
       end
     end
   end
