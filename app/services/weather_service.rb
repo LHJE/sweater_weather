@@ -1,4 +1,4 @@
-class WeatherDatabase
+class WeatherService
   def self.get_full_weather(lat, lon)
     post_parsed_full_json("data/2.5/onecall", lat, lon)
   end

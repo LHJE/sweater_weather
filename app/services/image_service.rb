@@ -1,4 +1,4 @@
-class ImageDatabase
+class ImageService
   def self.get_image(description, location)
     key = ENV['WEATHER_IMAGE_KEY']
     url = ENV['WEATHER_IMAGE_URL']

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Location Database" do
+RSpec.describe "Location Service" do
   it "Can return lat and long for a city" do
-    location = LocationDatabase.get_lat_and_long("denver, co")
+    location = LocationService.get_lat_and_long("denver, co")
 
     expect(location).to be_a(Hash)
     expect(location[:lat]).to be_a(Float)
@@ -16,7 +16,7 @@ RSpec.describe "Location Database" do
   it "Can return address for  geolocations" do
     place = [39.738453, -104.984853]
 
-    address = LocationDatabase.find_closest_address(place)
+    address = LocationService.find_closest_address(place)
 
     expect(address).to be_a(Hash)
   end
@@ -25,7 +25,7 @@ RSpec.describe "Location Database" do
     starting_address = "N Sherman St Denver CO "
     ending_address = "4017 Eldorado Springs Dr Boulder CO "
 
-    route = LocationDatabase.find_route(starting_address, ending_address)
+    route = LocationService.find_route(starting_address, ending_address)
 
     expect(route[:distance]).to eq(23.166)
   end

@@ -296,7 +296,6 @@ describe DailyForecast do
         expect(daily.sunset).to be_a(String)
         expect(daily.max_temp).to be_a(Numeric)
         expect(daily.min_temp).to be_a(Numeric)
-        # expect(daily.dew_point).to be_a(Numeric)
-        # expect(daily.temperature).to be_a(Numeric)
+        expect(daily.icon).to be_a(String)
     end
 end

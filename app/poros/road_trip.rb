@@ -26,36 +26,50 @@ class RoadTrip
   def get_route_time(time)
     if time.nil?
       "This destination is not reachable"
+    elsif time == 0
+      "This destination is not reachable.  You may have typed the name in incorrectly.  Perhaps you are already there?"
     else
       distance_of_time_in_words(time)
     end
   end
 
   def get_future_weather_forecast(time, forecasts)
-    if time.nil?
-      {temperature: forecasts[0].temperature, conditions: forecasts[0].conditions}
+    if time == 0 || time.nil?
+      "There wasn't enough information to tell you the forecast."
     else
-      if time > 172800
-        "There is no forcast that far into the future"
+      test_if_forecast_exists(time, forecasts)
+    end
+  end
+
+  def test_if_forecast_exists(time, forecasts)
+    if time > 172800
+      "There is no forcast that far into the future"
+    else
+      find_future_forecast(time, forecasts)
+    end
+  end
+
+  def find_future_forecast(time, forecasts)
+    future_time = Time.new + time
+    date = future_time.to_s.split(" ")[0]
+    future_forecast = get_future_forecast_depending_on_time(future_time, forecasts, date)
+    {temperature: future_forecast.temperature, conditions: future_forecast.conditions}
+  end
+
+  def get_future_forecast_depending_on_time(future_time, forecasts, date)
+    if future_time.min < 31
+      find_specific_forecast(future_time.hour, forecasts, date)
+    else
+      find_specific_forecast(future_time.hour + 1, forecasts, date)
+    end
+  end
+
+  def find_specific_forecast(future_time_hour, forecasts, date)
+    forecasts.find do |forecast|
+      if forecast.hour.split(" ")[0] == date
+        forecast.hour.to_time.hour == future_time_hour
       else
-        future_time = Time.new + time
-        date = future_time.to_s.split(" ")[0]
-        if future_time.min < 31
-          future_forecast = forecasts.find do |forecast|
-            if forecast.hour.split(" ")[0] == date
-              forecast.hour.to_time.hour == future_time.hour
-            end
-          end
-        else
-          future_forecast = forecasts.find do |forecast|
-            if forecast.hour.split(" ")[0] == date
-              forecast.hour.to_time.hour == future_time.hour + 1
-            else
-              forecast.hour.to_time.hour == future_time.hour
-            end
-          end
-        end
-        {temperature: future_forecast.temperature, conditions: future_forecast.conditions}
+        "There is no forcast that far into the future"
       end
     end
   end
