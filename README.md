@@ -1,4 +1,4 @@
-# Sweater Weather[.](https://www.youtube.com/watch?v=Nc6f9llfs0w)
+# Sweater Weather[.](https://www.youtube.com/watch?v=wCXyKmQ4dMc)
 
 Sweater Weather is a `rails` server which allows users to make API calls to:
 - `GET` forecast information for a specific city
@@ -46,7 +46,7 @@ You can delete the commented out code in there if you please.  Up to you.
 
 
 ## Usage
-Okay[!](https://www.youtube.com/watch?v=wCXyKmQ4dMc)  Now let's get to using this thing! First things first run in your console/terminal:
+Okay[!](https://www.youtube.com/watch?v=Nc6f9llfs0w)  Now let's get to using this thing! First things first run in your console/terminal:
 ```
 rails s
 ```
