@@ -169,9 +169,7 @@ RSpec.describe RoadTripSerializer do
     expect(rsp[:data][:attributes][:end_city]).to be_a(String)
     expect(rsp[:data][:attributes][:travel_time]).to eq("This destination is not reachable")
 
-    expect(rsp[:data][:attributes][:weather_at_eta]).to be_a(Hash)
-    expect(rsp[:data][:attributes][:weather_at_eta][:temperature]).to be_a(Numeric)
-    expect(rsp[:data][:attributes][:weather_at_eta][:conditions]).to be_a(String)
+    expect(rsp[:data][:attributes][:weather_at_eta]).to eq("There wasn't enough information to tell you the forecast.")
   end
 
   it "Sends road_trip information, but some errors due to no forcast that far out" do
