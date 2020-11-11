@@ -1,4 +1,4 @@
-class TrailsDatabase
+class TrailsService
   def self.get_trails(lat, long)
     key = ENV['TRAILS_API_KEY']
     url = ENV['TRAILS_URL']

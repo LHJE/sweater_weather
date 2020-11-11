@@ -1,4 +1,4 @@
-class LocationDatabase
+class LocationService
   def self.get_lat_and_long(location)
     key = ENV['MAP_API_KEY']
     url = ENV['MAP_URL']

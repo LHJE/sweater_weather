@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "Weather Database" do
+RSpec.describe "Weather Service" do
   it "Can return forecast data for a geolocation" do
     location = "denver, co"
     description = "Cloudy"
 
-    image = ImageDatabase.get_image(description, location)[:results][0]
+    image = ImageService.get_image(description, location)[:results][0]
 
     expect(image).to be_a(Hash)
     expect(image[:id]).to be_a(String)

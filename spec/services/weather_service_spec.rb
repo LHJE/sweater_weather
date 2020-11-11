@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "Weather Database" do
+RSpec.describe "Weather Service" do
   it "Can return forecast data for a geolocation" do
     lat = 39.738453
     lon = -104.984853
 
-    weather = WeatherDatabase.get_full_weather(lat, lon)
+    weather = WeatherService.get_full_weather(lat, lon)
 
     expect(weather).to be_a(Hash)
     expect(weather[:current]).to be_a(Hash)
@@ -51,7 +51,7 @@ RSpec.describe "Weather Database" do
     lat = 39.738453
     lon = -104.984853
 
-    weather = WeatherDatabase.get_current_weather(lat, lon)
+    weather = WeatherService.get_current_weather(lat, lon)
 
     expect(weather).to be_a(Hash)
     expect(weather[:dt]).to be_a(Numeric)
@@ -82,7 +82,7 @@ RSpec.describe "Weather Database" do
     lat = 39.738453
     lon = -104.984853
 
-    weather = WeatherDatabase.get_hourly_weather(lat, lon)
+    weather = WeatherService.get_hourly_weather(lat, lon)
 
     expect(weather).to be_a(Hash)
     expect(weather[:lat]).to be_a(Numeric)
