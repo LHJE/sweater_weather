@@ -5,7 +5,9 @@ Sweater Weather is a `rails` server which allows users to make API calls to:
 - `GET` information about an image related to a specific city and its current weather
 - `POST`, or 'register', a new user and assign them an API Key
 - `POST`, or 'login', a registered user
-- `POST`, or 'search for', details regarding a road trip between two specific cities, including travel time and weather at the location
+- `POST`, or 'search for', details regarding a road trip between two specific cities, including travel time and weather at the location  
+
+This was completed as a part of the [Turing School of Software and Design](https://turing.io/) Back End certificate curriculum 
 
 ## Installation
 
@@ -236,22 +238,6 @@ Please make sure to update tests as appropriate.
 ### Contributors:
 
 [Luke Hunter James-Erickson](https://www.linkedin.com/in/luke-hunter-james-erickson-b65682143/)
-
-## Gems Being Utilized
-Here are the more relevant gems we've added to the base rails gems to make this app really sing:
-
-```
-gem 'faraday'
-gem 'webmock'
-gem 'vcr'
-gem "figaro"
-gem 'travis'
-```  
-
-We're using `faraday` to allow for API calls.  
-We're using `figaro` to abstract the API Keys we're using.  
-We're using `webmock` and `vcr`  to stub out API calls for testing.  
-We're using `travis` to ensure that new changes to the build merge successfully.  
 
 ## Versions
 
