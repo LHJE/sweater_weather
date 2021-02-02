@@ -27,6 +27,6 @@ RSpec.describe "Location Service" do
 
     route = LocationService.find_route(starting_address, ending_address)
 
-    expect(route[:distance]).to eq(23.595)
+    expect(route[:distance]).to eq(30.099)
   end
 end
