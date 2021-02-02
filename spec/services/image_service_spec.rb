@@ -11,7 +11,6 @@ RSpec.describe "Weather Service" do
     expect(image[:id]).to be_a(String)
     expect(image[:created_at]).to be_a(String)
     expect(image[:updated_at]).to be_a(String)
-    expect(image[:promoted_at]).to be_a(NilClass)
     expect(image[:width]).to be_a(Numeric)
     expect(image[:height]).to be_a(Numeric)
     expect(image[:color]).to be_a(String)
