@@ -14,6 +14,6 @@ RSpec.describe 'Search Facade' do
 
     route = SearchFacade.find_route_with_lat_long(place_1, place_2)
 
-    expect(route[:distance]).to eq(23.166)
+    expect(route[:distance]).to eq(23.595)
   end
 end
